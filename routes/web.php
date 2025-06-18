@@ -21,11 +21,11 @@ Route::get('/', function () {
 
 // GET request
 Route::get('/post', function () {
-    return "<h1>This is a post</h1>";
+    return view('pages/posts/index');
 });
 
 Route::get('/post/create', function () {
-    return "<h1>This is a post create page</h1>";
+    return view('pages/posts/create');
 });
 
 // POST request
