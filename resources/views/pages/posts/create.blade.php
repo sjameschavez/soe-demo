@@ -1,10 +1,12 @@
 @extends('layouts.layout')
 
-@section('title', 'Submit Form')
+@section('title', isset($data) ? 'Update Form' : 'Submit Form')
 
 @section('content')
     <div class="max-w-lg mx-auto bg-white p-8 rounded shadow">
-        <h2 class="text-2xl font-bold mb-6">Contact Form</h2>
+        <h2 class="text-2xl font-bold mb-6">
+            {{ isset($data) ? 'Update Contact' : 'Contact Form' }}
+        </h2>
 
         @if (session('success'))
             <div class="mb-4 text-green-700 bg-green-100 p-4 rounded">
@@ -22,27 +24,42 @@
             </div>
         @endif
 
-        <!-- <form action="" method="POST" class="space-y-4"> -->
-        <form>
-            @csrf
+        <?php
+        //       <form 
+        //     action="{{ isset($data) ? route('posts.update', $data->id) : route('posts.store') }}" 
+        //     method="POST" 
+        //     class="space-y-4"
+        //  @csrf
+        //     @if(isset($data))
+        //         @method('PATCH')
+        //     @endif 
+        ?>
+  
 
+            <form>
             <div>
                 <label for="name" class="block text-sm font-medium">Name</label>
-                <input type="text" name="name" id="name" class="w-full mt-1 p-2 border rounded" value="{{ old('name') }}">
-            </div>
-
-            <div>
-                <label for="email" class="block text-sm font-medium">Email</label>
-                <input type="email" name="email" id="email" class="w-full mt-1 p-2 border rounded" value="{{ old('email') }}">
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    class="w-full mt-1 p-2 border rounded"
+                    value="{{ old('name', isset($data) ? $data->name : '') }}"
+                >
             </div>
 
             <div>
                 <label for="message" class="block text-sm font-medium">Message</label>
-                <textarea name="message" id="message" rows="4" class="w-full mt-1 p-2 border rounded">{{ old('message') }}</textarea>
+                <textarea 
+                    name="message" 
+                    id="message" 
+                    rows="4" 
+                    class="w-full mt-1 p-2 border rounded"
+                >{{ old('message', isset($data) ? $data->message : '') }}</textarea>
             </div>
 
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Submit
+                {{ isset($data) ? 'Update' : 'Submit' }}
             </button>
         </form>
     </div>

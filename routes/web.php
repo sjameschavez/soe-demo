@@ -21,7 +21,12 @@ Route::get('/', function () {
 
 // GET request
 Route::get('/post', function () {
-    return view('pages/posts/index');
+    $data = [
+        'posts' => [
+            ['id' => 1, 'name' => 'test', 'message' => 'lorem ipsum']
+        ]
+    ];
+    return view('pages/posts/index',$data);
 });
 
 Route::get('/post/create', function () {
@@ -34,7 +39,12 @@ Route::post('/post', function () {
 });
 
 Route::get('/post/{id}', function () {
-    return "<h1>This is a post edit page</h1>";
+    $data = [
+    'posts' => [
+        ['id' => 1, 'name' => 'test', 'message' => 'lorem ipsum']
+    ]
+    ];
+    return view('pages/posts/create', $data);
 });
 
 // PATCH request — Note the {id} instead of :id
