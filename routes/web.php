@@ -31,7 +31,10 @@ Route::get('/post/create', function () {
 // POST request
 Route::post('/post', function () {
     //TODO
-    return view('welcome');
+});
+
+Route::get('/post/{id}', function () {
+    return "<h1>This is a post edit page</h1>";
 });
 
 // PATCH request — Note the {id} instead of :id
