@@ -28,7 +28,8 @@
         action="{{ isset($data) ? route('posts.update', $data->id) : route('posts.store') }}"
         method="POST"
         class="space-y-4">
-        @csrf
+        <!-- to protect against Cross-Site Request Forgery (CSRF) attacks -->
+        @csrf 
         @if(isset($data))
         @method('PATCH')
         @endif
@@ -52,10 +53,10 @@
                 class="w-full mt-1 p-2 border rounded">{{ old('message', isset($data) ? $data->message : '') }}</textarea>
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button type="submit" class="bg-green-600 text-white px-3 rounded hover:bg-green-700" style="padding: 4px;">
             {{ isset($data) ? 'Update' : 'Submit' }}
         </button>
-        <a href="/posts" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        <a href="/posts" class="bg-blue-600 text-white px-3 rounded hover:bg-blue-700" style="padding: 5.5px;">
             Cancel
         </a>
     </form>

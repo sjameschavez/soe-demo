@@ -21,7 +21,7 @@
 
     @foreach ($posts as $post)
         <div class="border-b border-gray-200 mb-4 pb-2">
-            <p><strong>ID:</strong> {{ $post->id }}</p>
+            <!-- <p><strong>ID:</strong> {{ $post->id }}</p> -->
             <p><strong>Name:</strong> {{ $post->name }}</p>
             <p><strong>Message:</strong> {{ $post->message }}</p>
 
